@@ -34,13 +34,13 @@ async function run() {
   //set location
   await page.waitForSelector('input[placeholder="Location"]');
   const locationInput = await page.$('input[placeholder="Location"]');
-  await locationInput.type(cityName, { delay: 100 }); // Example text input
+  await locationInput.type(cityName, { delay: 100 });
 
   //clicking the first suggestion
   await page.waitForSelector('ul[role="listbox"]');
   await page.click('ul[role="listbox"] li:first-of-type');
 
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   // Scroll dynamically to load all content
   const scrollPageToBottom = async () => {
