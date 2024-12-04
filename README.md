@@ -1,7 +1,7 @@
 ## Installation
 1. Clone the repository:
  ```bash
- https://github.com/Emmanuel-Rods/Facebook-Scraper
+ git clone https://github.com/Emmanuel-Rods/Facebook-Scraper
  ```
 2. Navigate to the project folder:
 ```bash
@@ -23,7 +23,7 @@ YOUR_PASSWORD= <Your Facebook Password>
 
 ##Quick install
 ```bash
- https://github.com/Emmanuel-Rods/Facebook-Scraper
+ git clone https://github.com/Emmanuel-Rods/Facebook-Scraper
  cd Facebook-Scraper
  npm install
  cp .env.example .env
