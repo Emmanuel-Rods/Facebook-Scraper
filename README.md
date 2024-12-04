@@ -27,5 +27,5 @@ YOUR_PASSWORD= <Your Facebook Password>
  cd Facebook-Scraper
  npm install
  cp .env.example .env
- echo open the .env file and fill your info
+ code .env
 ```
