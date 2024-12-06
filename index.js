@@ -95,6 +95,23 @@ async function run() {
           }
           return null;
         };
+        //href tags 
+        const extractLinkByIcon = (iconName) => {
+          const icon = Array.from(document.querySelectorAll("img")).find(
+            (img) => img.src.endsWith(iconName)
+          );
+          if (icon) {
+            const parentDiv = icon.closest("div");
+            const nextDiv = parentDiv ? parentDiv.nextElementSibling : null;
+            if (nextDiv) {
+              const anchorElement = nextDiv.querySelector("a");
+              if (anchorElement) {
+                return anchorElement.href;
+              }
+            }
+          }
+          return null;
+        };
 
         const nameElement = document.querySelector("h1");
         const name = nameElement ? nameElement.textContent.trim() : null;
@@ -102,6 +119,7 @@ async function run() {
         // Extract phone number, email, and website using their unique file names
         const phoneNumber = extractInfoByIcon("Dc7-7AgwkwS.png");
         const email = extractInfoByIcon("2PIcyqpptfD.png");
+        // const website = extractLinkByIcon("BQdeC67wT9z.png"); //for facebook redirect links
         const website = extractInfoByIcon("BQdeC67wT9z.png");
 
         return {
@@ -124,7 +142,7 @@ async function run() {
     }
   }
   await page.screenshot({ path: "screenshot.png" });
-  saveToExcel(extractedData, `${query}-${cityName}.xlsx`);
+  saveToExcel(extractedData, `${query}-in-${cityName}-facebook.xlsx`);
   await browser.close();
 }
 
