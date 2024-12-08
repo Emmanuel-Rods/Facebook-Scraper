@@ -4,13 +4,13 @@ puppeteerExtra.use(Stealth());
 const fs = require("fs").promises;
 const XLSX = require("xlsx");
 
-const query = "cleaning";
-const cityName = "new york";
-const scrollDelay = 1000 //in milliseconds
-const pageLoadDelay = 10000 // in miliseconds
+const scrollDelay = 1500 //in milliseconds
+const pageLoadDelay = 6000 // in miliseconds
 
-async function run() {
-  const browser = await puppeteerExtra.launch({ headless: false });
+
+
+async function run(query , cityName) {
+  const browser = await puppeteerExtra.launch({ headless: true });
   const page = await browser.newPage();
 
   await page.setViewport({ width: 1920, height: 1080 });
@@ -154,4 +154,26 @@ function saveToExcel(data, fileName) {
   console.log(`Data saved to ${fileName}`);
 }
 
-run();
+
+
+
+const servicesAndLocations = [
+  { service: "Fencing", location: "Roseville" },
+  { service: "Locksmith", location: "Roseville" },
+  { service: "Locksmith", location: "Hayward" },
+  { service: "Pest control", location: "Hayward" },
+  { service: "Pest control", location: "Roseville" },
+  { service: "Pest control", location: "Salinas" },
+  { service: "Carpet cleaning", location: "Salinas" },
+  { service: "Carpet cleaning", location: "Hayward" },
+  { service: "Carpet cleaning", location: "Roseville" }
+];
+
+
+async function execute() {
+  for (const { service, location } of servicesAndLocations) {
+    await run(service, location);
+  }
+}
+
+execute()
